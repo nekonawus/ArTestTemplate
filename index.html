@@ -3,22 +3,23 @@
   <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width,initial-scale=1">
-     <title>WebARTest</title>
-    
-<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.min.js"></script>
-
+     <title>WebARの体験</title>
+     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.min.js"></script>
   </head>
   <body style="margin:0px; overflow:hidden;">
-     <!--A-frameにAR.jsを紐づける-->
      <a-scene embedded arjs="debugUIEnabled:false;">
-       <!--マーカーを登録(ここではデフォルトで用意されているhiroマーカーを指定)-->
        <a-marker preset="hiro">
-         <!--マーカー上にワイヤーフレーム表示-->
-　       <a-box position="0 0.5 0" wireframe="true"></a-box>
+         <!-- マーカー上にアニメーション付きのティラノサウルスモデルを表示 -->
+         <a-entity 
+           gltf-model="url(https://cdn.aframe.io/test-models/models/trex/scene.gltf)" 
+           scale="0.05 0.05 0.05" 
+           position="0 0 0"
+           animation__position="property: position; to: 0 1 -5; dur: 2000; easing: easeInOutQuad; loop: true; dir: alternate"
+           animation__rotation="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true">
+         </a-entity>
        </a-marker>
-       <!--AR用のカメラを置く-->
-　    <a-entity camera></a-entity>
-    <a-scene>
+       <a-entity camera></a-entity>
+    </a-scene>
   </body>
 </html>
